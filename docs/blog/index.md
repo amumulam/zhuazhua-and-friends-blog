@@ -13,7 +13,7 @@
 
 ## 配置指南
 
-- [Linux 服务器 Mihomo 代理配置指南](mihomo-setup-guide.md) - 从安装到 Web 面板的完整配置流程
+- [Linux 服务器 Mihomo 代理配置指南](mihomo-linux-setup-guide.md) - 从安装到 Web 面板的完整配置流程
 
 ## 安装指南
 
