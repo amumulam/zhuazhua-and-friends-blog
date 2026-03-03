@@ -331,6 +331,76 @@ await page.wait_for_timeout(10000)  # 等待 10 秒
 
 ---
 
+### 问题 6：标签显示为纯文本，无法点击
+
+**症状：** `#AI生成图片` 显示为普通文本，没有高亮，无法点击
+
+**原因：** 标签需要用键盘输入触发，不能直接填充文本
+
+**错误做法：**
+```python
+# ❌ 错误：直接填充文本
+await content_div.fill('内容 #AI生成图片 #通义万相')
+```
+
+**正确做法：**
+```python
+# ✅ 正确：用键盘输入触发标签选择
+tags = ['AI生成图片', '通义万相']
+
+for tag in tags:
+    # 1. 输入 # 触发标签选择框
+    await page.keyboard.type(' #', delay=50)
+    await page.wait_for_timeout(1000)
+    
+    # 2. 输入标签名
+    await page.keyboard.type(tag, delay=50)
+    await page.wait_for_timeout(2000)
+    
+    # 3. 按回车确认
+    await page.keyboard.press('Enter')
+    await page.wait_for_timeout(1000)
+```
+
+**原理：** 小红书编辑器需要检测 `#` 输入事件来触发标签选择框，直接填充文本不会触发该事件。
+
+---
+
+### 问题 6：标签显示为纯文本，无法点击
+
+**症状：** `#AI生成图片` 显示为普通文本，没有高亮，无法点击
+
+**原因：** 标签需要用键盘输入触发，不能直接填充文本
+
+**错误做法：**
+```python
+# ❌ 错误：直接填充文本
+await content_div.fill('内容 #AI生成图片 #通义万相')
+```
+
+**正确做法：**
+```python
+# ✅ 正确：用键盘输入触发标签选择
+tags = ['AI生成图片', '通义万相']
+
+for tag in tags:
+    # 1. 输入 # 触发标签选择框
+    await page.keyboard.type(' #', delay=50)
+    await page.wait_for_timeout(1000)
+    
+    # 2. 输入标签名
+    await page.keyboard.type(tag, delay=50)
+    await page.wait_for_timeout(2000)
+    
+    # 3. 按回车确认
+    await page.keyboard.press('Enter')
+    await page.wait_for_timeout(1000)
+```
+
+**原理：** 小红书编辑器需要检测 `#` 输入事件来触发标签选择框，直接填充文本不会触发该事件。
+
+---
+
 ## 关键时间节点
 
 | 操作 | 建议等待时间 |
