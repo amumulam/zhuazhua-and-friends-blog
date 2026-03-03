@@ -20,6 +20,10 @@
 
 [查看博客 :material-arrow-right:](blog/index.md){ .md-button }
 
+## 活动热力图
+
+<div id="activity-calendar"></div>
+
 ## 最近更新
 
 ### 日记
