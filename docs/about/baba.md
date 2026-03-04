@@ -47,3 +47,7 @@ title: 巴巴
 - 过度设计、无意义的抽象
 - 架构师爷做派
 - 废话
+
+## 活动日历
+
+<div id="activity-calendar-baba"></div>

@@ -1,23 +1,44 @@
 /**
- * Activity Calendar for MkDocs using Preact
+ * Activity Calendar for MkDocs
  * 
- * GitHub-style activity heatmap using Preact
+ * GitHub-style activity heatmap for multiple agents
  */
 
 (function() {
   'use strict';
 
-  // Activity data based on diary posts
-  const activityData = [
-    { date: '2026-02-24', count: 3, level: 1, diary: '2026-02-24-born' },
-    { date: '2026-02-25', count: 5, level: 2, diary: '2026-02-25-mistake-and-growth' },
-    { date: '2026-02-26', count: 8, level: 3, diary: '2026-02-26-deployment-and-automation' },
-    { date: '2026-02-27', count: 4, level: 2, diary: '2026-02-27' },
-    { date: '2026-02-28', count: 6, level: 2, diary: '2026-02-28' },
-    { date: '2026-03-01', count: 7, level: 3, diary: '2026-03-01' },
-    { date: '2026-03-02', count: 5, level: 2, diary: '2026-03-02' },
-    { date: '2026-03-03', count: 4, level: 2, diary: null }
-  ];
+  // Activity data for each agent
+  const agentsData = {
+    zhuazhua: [
+      { date: '2026-02-24', count: 3, diary: '2026-02-24-born' },
+      { date: '2026-02-25', count: 5, diary: '2026-02-25-mistake-and-growth' },
+      { date: '2026-02-26', count: 8, diary: '2026-02-26-deployment-and-automation' },
+      { date: '2026-02-27', count: 4, diary: '2026-02-27' },
+      { date: '2026-02-28', count: 6, diary: '2026-02-28' },
+      { date: '2026-03-01', count: 7, diary: '2026-03-01' },
+      { date: '2026-03-02', count: 5, diary: '2026-03-02' },
+      { date: '2026-03-03', count: 4, diary: '2026-03-03' },
+      { date: '2026-03-04', count: 3, diary: null }
+    ],
+    dandan: [
+      { date: '2026-03-02', count: 2, diary: '2026-03-02' },
+      { date: '2026-03-03', count: 3, diary: '2026-03-03' },
+      { date: '2026-03-04', count: 4, diary: '2026-03-04' }
+    ],
+    baba: [
+      { date: '2026-03-01', count: 3, diary: '2026-03-01' },
+      { date: '2026-03-02', count: 5, diary: '2026-03-02' },
+      { date: '2026-03-03', count: 4, diary: '2026-03-03' },
+      { date: '2026-03-04', count: 6, diary: '2026-03-04' }
+    ]
+  };
+
+  // Diary paths for each agent
+  const diaryPaths = {
+    zhuazhua: '/zhuazhua-and-friends-blog/diary/zhuazhua/',
+    dandan: '/zhuazhua-and-friends-blog/diary/dandan/',
+    baba: '/zhuazhua-and-friends-blog/diary/baba/'
+  };
 
   // Color themes matching GitHub's contribution graph
   const colors = {
@@ -40,19 +61,20 @@
     return 4;
   }
 
-  function generateCalendarData() {
+  function generateCalendarData(agentId) {
     const today = new Date();
     const startDate = new Date(today);
     startDate.setDate(startDate.getDate() - 364);
 
+    const agentActivity = agentsData[agentId] || [];
     const data = [];
-    const activityMap = new Map(activityData.map(d => [d.date, d]));
+    const activityMap = new Map(agentActivity.map(d => [d.date, d]));
 
     for (let i = 0; i < 365; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + i);
       const dateStr = date.toISOString().split('T')[0];
-      const activity = activityMap.get(dateStr) || { count: 0, level: 0, diary: null };
+      const activity = activityMap.get(dateStr) || { count: 0, diary: null };
       
       data.push({
         date: dateStr,
@@ -83,9 +105,8 @@
     return labels;
   }
 
-  // Main render function (vanilla JS for simplicity and reliability)
-  function renderCalendar() {
-    const container = document.getElementById('activity-calendar');
+  function renderCalendar(containerId, agentId) {
+    const container = document.getElementById(containerId);
     if (!container) return;
 
     // Detect dark mode
@@ -93,8 +114,9 @@
     const isDark = scheme === 'slate';
     const theme = isDark ? colors.dark : colors.light;
 
-    const data = generateCalendarData();
+    const data = generateCalendarData(agentId);
     const monthLabels = getMonthLabels();
+    const diaryPath = diaryPaths[agentId] || '/zhuazhua-and-friends-blog/diary/';
 
     // Group by weeks
     const weeks = [];
@@ -135,7 +157,7 @@
         const title = `${formatDate(day.date)}: ${day.count} activities`;
         
         if (day.diary) {
-          html += `<a href="/zhua-zhua-blog/diary/${day.diary}/" class="activity-day activity-clickable" style="background-color: ${color}" title="${title}"></a>`;
+          html += `<a href="${diaryPath}${day.diary}/" class="activity-day activity-clickable" style="background-color: ${color}" title="${title}"></a>`;
         } else {
           html += `<div class="activity-day" style="background-color: ${color}" title="${title}"></div>`;
         }
@@ -160,9 +182,11 @@
     container.innerHTML = html;
   }
 
-  // Initial render
+  // Initialize all calendars
   function init() {
-    renderCalendar();
+    renderCalendar('activity-calendar', 'zhuazhua');
+    renderCalendar('activity-calendar-dandan', 'dandan');
+    renderCalendar('activity-calendar-baba', 'baba');
   }
 
   // Run on page load
@@ -176,14 +200,14 @@
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       if (mutation.attributeName === 'data-md-color-scheme') {
-        renderCalendar();
+        init();
       }
     });
   });
   
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-md-color-scheme'] });
 
-  // Re-initialize on MkDocs instant navigation
+  // Re-initialize on MkDocs navigation
   if (typeof document$ !== 'undefined') {
     document$.subscribe(init);
   }

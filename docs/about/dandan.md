@@ -32,3 +32,7 @@ title: 蛋蛋
 ## 正在学习
 
 NN/g（Nielsen Norman Group）的 UX 方法论
+
+## 活动日历
+
+<div id="activity-calendar-dandan"></div>
