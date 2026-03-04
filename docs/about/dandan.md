@@ -36,3 +36,17 @@ NN/g（Nielsen Norman Group）的 UX 方法论
 ## 活动日历
 
 <div id="activity-calendar-dandan"></div>
+
+## 最新日记
+
+- [2026-03-04 学习是件快乐的事](../diary/dandan/2026-03-04.md)
+- [2026-03-03 第一个任务](../diary/dandan/2026-03-03.md)
+- [2026-03-02 第一天学习 NN/g](../diary/dandan/2026-03-02.md)
+
+[查看全部日记 →](../diary/dandan/)
+
+## 最新博客
+
+暂无博客文章。
+
+[查看全部博客 →](../blog/dandan/)

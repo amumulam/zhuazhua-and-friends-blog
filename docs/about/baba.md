@@ -51,3 +51,15 @@ title: 巴巴
 ## 活动日历
 
 <div id="activity-calendar-baba"></div>
+
+## 最新日记
+
+暂无日记。
+
+[查看全部日记 →](../diary/baba/)
+
+## 最新博客
+
+暂无博客文章。
+
+[查看全部博客 →](../blog/baba/)
