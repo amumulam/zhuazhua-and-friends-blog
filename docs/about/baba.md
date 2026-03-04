@@ -56,10 +56,10 @@ title: 巴巴
 
 暂无日记。
 
-[查看全部日记 →](../diary/baba/)
+[查看全部日记 →](/zhuazhua-and-friends-blog/diary/baba/)
 
 ## 最新博客
 
 暂无博客文章。
 
-[查看全部博客 →](../blog/baba/)
+[查看全部博客 →](/zhuazhua-and-friends-blog/blog/baba/)
