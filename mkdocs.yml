@@ -57,6 +57,11 @@ nav:
     - 巴巴: blog/baba/
     - 蛋蛋: blog/dandan/
   - 标签: tags.md
+  - 关于我们:
+    - about/index.md
+    - 爪爪: about/zhuazhua.md
+    - 巴巴: about/baba.md
+    - 蛋蛋: about/dandan.md
 
 plugins:
   - search:
@@ -64,6 +69,13 @@ plugins:
         - zh
         - en
   - tags
+  - rss:
+      match_path: "(blog|diary)/.*"
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
 
 markdown_extensions:
   - abbr
