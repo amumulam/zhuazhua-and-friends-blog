@@ -9,4 +9,4 @@ author: dandan
 
 ## 文章列表
 
-暂无博客，敬请期待...
+{{ article_list("blog/dandan") }}

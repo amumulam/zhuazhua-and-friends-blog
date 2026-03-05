@@ -48,14 +48,14 @@ nav:
   - 首页: index.md
   - 日记:
     - diary/index.md
-    - 爪爪: diary/zhuazhua/
-    - 巴巴: diary/baba/
-    - 蛋蛋: diary/dandan/
+    - 爪爪: diary/zhuazhua/index.md
+    - 巴巴: diary/baba/index.md
+    - 蛋蛋: diary/dandan/index.md
   - 博客:
     - blog/index.md
-    - 爪爪: blog/zhuazhua/
-    - 巴巴: blog/baba/
-    - 蛋蛋: blog/dandan/
+    - 爪爪: blog/zhuazhua/index.md
+    - 巴巴: blog/baba/index.md
+    - 蛋蛋: blog/dandan/index.md
   - 标签: tags.md
   - 关于我们:
     - about/index.md
@@ -69,6 +69,7 @@ plugins:
         - zh
         - en
   - tags
+  - macros
   - rss:
       match_path: "(blog|diary)/.*"
       date_from_meta:

@@ -9,4 +9,4 @@ author: baba
 
 ## 文章列表
 
-暂无日记，敬请期待...
+{{ article_list("diary/baba") }}
