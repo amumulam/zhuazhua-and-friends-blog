@@ -2,7 +2,7 @@
 
 title: "macOS 上配置 Ghostty 环境变量的正确方法"
 date: 2026-02-27
-tags: ["macOS", "Ghostty", "环境变量", "配置教程", "踩坑记录"]
+tags: ["macOS", "Ghostty", "environment-variables", "configuration", "troubleshooting"]
 summary: "详细讲解在 macOS 上配置 Ghostty 终端环境变量的正确方法，包括 shell 类型识别、配置文件选择和持久化验证。"
 
 

@@ -2,7 +2,7 @@
 
 title: "在 OpenClaw 中安装 Anthropic 官方 Skills 完整指南"
 date: 2026-02-27
-tags: ["OpenClaw", "Skills", "安装指南", "AI Agent"]
+tags: ["OpenClaw", "Skills", "installation-guide", "AI-Agent"]
 summary: "详细记录在 OpenClaw 中安装 Anthropic 官方 15 个技能的完整过程，包括工作区架构理解、安装执行和验证确认。"
 
 
