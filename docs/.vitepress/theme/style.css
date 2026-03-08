@@ -1,0 +1,296 @@
+/* Wikipedia Vector Style for VitePress */
+
+/* ==========================================================================
+   基础变量
+   ========================================================================== */
+:root {
+  --wp-body-bg: #f6f6f6;
+  --wp-content-bg: #ffffff;
+  --wp-border: #a7d7f9;
+  --wp-border-gray: #a2a9b1;
+  --wp-text: #202122;
+  --wp-link: #0645ad;
+  --wp-link-visited: #0b0080;
+  --wp-link-hover: #3366cc;
+  --wp-header-bg: #f8f9fa;
+}
+
+/* ==========================================================================
+   全局样式
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--wp-text);
+  background-color: var(--wp-body-bg);
+}
+
+a {
+  color: var(--wp-link);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--wp-link-visited);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   容器
+   ========================================================================== */
+.wiki-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   顶部导航
+   ========================================================================== */
+.wiki-header {
+  background-color: var(--wp-body-bg);
+  padding: 0.5rem 1rem;
+}
+
+.wiki-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wiki-logo {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: var(--wp-text);
+}
+
+.wiki-logo-text {
+  font-family: "Linux Libertine", "Georgia", "Times", serif;
+}
+
+.wiki-search input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--wp-border-gray);
+  border-radius: 2px;
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   标签页
+   ========================================================================== */
+.wiki-tabs {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--wp-body-bg);
+  border-bottom: 1px solid var(--wp-border);
+  padding: 0 1rem;
+}
+
+.wiki-tabs ul {
+  list-style: none;
+  display: flex;
+}
+
+.wiki-tabs li {
+  margin-right: 2px;
+  background-image: linear-gradient(to bottom, #eeeeee 0%, #f6f6f6 100%);
+  border: 1px solid var(--wp-border);
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.wiki-tabs li.selected {
+  background: var(--wp-content-bg);
+  border-bottom: 1px solid var(--wp-content-bg);
+  margin-bottom: -1px;
+}
+
+.wiki-tabs li a,
+.wiki-tabs li span {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.wiki-tabs li.selected span {
+  color: var(--wp-text);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   主内容区
+   ========================================================================== */
+.wiki-main {
+  display: flex;
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ==========================================================================
+   侧边栏
+   ========================================================================== */
+.wiki-sidebar {
+  width: 160px;
+  padding: 1rem 0.5rem;
+  flex-shrink: 0;
+}
+
+.wiki-nav-section h3 {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #54595d;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.wiki-nav ul {
+  list-style: none;
+}
+
+.wiki-nav li {
+  margin-bottom: 0.3rem;
+}
+
+.wiki-nav a {
+  font-size: 0.75rem;
+  color: var(--wp-link);
+}
+
+/* ==========================================================================
+   内容区
+   ========================================================================== */
+.wiki-content {
+  flex: 1;
+  background-color: var(--wp-content-bg);
+  border: 1px solid var(--wp-border);
+  border-right: none;
+  border-bottom: none;
+  padding: 1.5rem 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.wiki-content h1 {
+  font-family: "Linux Libertine", "Georgia", "Times", serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+  border-bottom: 1px solid var(--wp-border-gray);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.wiki-content h2 {
+  font-family: "Linux Libertine", "Georgia", "Times", serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  border-bottom: 1px solid var(--wp-border-gray);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.wiki-content h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.wiki-content p {
+  margin-bottom: 0.8rem;
+}
+
+/* ==========================================================================
+   表格
+   ========================================================================== */
+.wiki-content table {
+  border: 1px solid var(--wp-border-gray);
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.wiki-content th,
+.wiki-content td {
+  border: 1px solid var(--wp-border-gray);
+  padding: 0.4em 0.6em;
+}
+
+.wiki-content th {
+  background-color: #eaecf0;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   代码块
+   ========================================================================== */
+.wiki-content code {
+  background-color: var(--wp-header-bg);
+  border: 1px solid var(--wp-border-gray);
+  padding: 0.1em 0.3em;
+  font-family: monospace;
+  font-size: 0.875em;
+}
+
+.wiki-content pre {
+  background-color: var(--wp-header-bg);
+  border: 1px solid var(--wp-border-gray);
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.wiki-content pre code {
+  border: none;
+  background: transparent;
+}
+
+/* ==========================================================================
+   页脚
+   ========================================================================== */
+.wiki-footer {
+  background-color: var(--wp-body-bg);
+  border-top: 1px solid var(--wp-border-gray);
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.wiki-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #54595d;
+}
+
+/* ==========================================================================
+   响应式
+   ========================================================================== */
+@media (max-width: 768px) {
+  .wiki-sidebar {
+    display: none;
+  }
+
+  .wiki-content {
+    padding: 1rem;
+  }
+
+  .wiki-tabs {
+    flex-direction: column;
+  }
+}
