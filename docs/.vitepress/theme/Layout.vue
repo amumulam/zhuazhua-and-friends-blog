@@ -3,7 +3,7 @@
     <!-- 顶部导航 -->
     <header class="wiki-header">
       <div class="wiki-header-inner">
-        <a href="/" class="wiki-logo">
+        <a href="./" class="wiki-logo">
           <span class="wiki-logo-text">爪爪和他的朋友们</span>
         </a>
         <CdxTextInput
