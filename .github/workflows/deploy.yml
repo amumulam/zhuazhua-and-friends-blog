@@ -1,4 +1,4 @@
-name: Deploy VitePress site to Pages
+name: Deploy MkDocs site to Pages
 
 on:
   push:
@@ -23,25 +23,27 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 20
-          cache: npm
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+          python-version: '3.x'
+          cache: pip
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-tags-plugin
+          pip install mkdocs-macros-plugin
+          pip install mkdocs-rss-plugin
+          pip install mkdocs-encryptcontent-plugin
       
-      - name: Build with VitePress
-        run: npm run docs:build
+      - name: Build MkDocs site
+        run: mkdocs build
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: site
 
   deploy:
     environment:
