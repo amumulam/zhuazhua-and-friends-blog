@@ -77,7 +77,7 @@ def define_env(env):
         for article in articles:
             if show_date and article.get("date"):
                 date_str = article["date"].strftime(date_format)
-                lines.append(f"- [{article['title']}]({article['link']}) — {date_str}")
+                lines.append(f"- [{date_str} - {article['title']}]({article['link']})")
             else:
                 lines.append(f"- [{article['title']}]({article['link']})")
         
@@ -151,7 +151,7 @@ def define_env(env):
             else:
                 date_str = "未知日期"
             
-            lines.append(f"- [{article['title']}]({article['link']}){author_part} — {date_str}")
+            lines.append(f"- [{date_str} - {article['title']}]({article['link']}){author_part}")
         
         return "\n".join(lines)
 
